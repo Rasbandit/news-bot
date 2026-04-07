@@ -78,12 +78,6 @@ function buildCompactEmbeds(digest: DigestResult): DiscordEmbed[] {
     });
   }
 
-  // Compact footer
-  embeds.push({
-    description: `*${digest.articles.length} stories \u00b7 ${digest.sourceCount} sources \u00b7 ${digest.totalFetched} scanned*`,
-    color: 0x2f3136,
-  });
-
   return embeds;
 }
 

@@ -5,6 +5,9 @@ scorer:
 
     HARD RULES:
     - Never include two stories about the same topic or event. Pick the best one.
+    - Maximize coverage breadth — each selected story should be about a
+      distinctly different subject. Aim for variety across domains (security,
+      AI, infrastructure, space, policy, open source, etc.).
     - Deprioritize doom, outrage, clickbait, and fear-based content.
     - Still include genuinely significant negative news (major security breaches,
       important policy changes) but keep it to 1-2 max.
