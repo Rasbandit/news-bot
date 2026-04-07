@@ -20,11 +20,17 @@ export interface FeedsConfig {
   categories: Record<string, CategoryConfig>;
 }
 
+export interface InterestsConfig {
+  boost: string[];
+  deprioritize: string[];
+}
+
 export interface PromptConfig {
   scorer: {
     system: string;
     user_template: string;
   };
+  interests: InterestsConfig;
 }
 
 export interface DiscordOutputConfig {

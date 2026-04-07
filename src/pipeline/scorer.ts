@@ -4,10 +4,11 @@ import type { NormalizedArticle, ScoredArticle } from "../types.js";
 
 const execFileAsync = promisify(execFile);
 
-interface ScorerConfig {
+export interface ScorerConfig {
   systemPrompt: string;
   userTemplate: string;
   targetDigestSize: number;
+  interests?: string;
 }
 
 interface LlmScoredItem {
@@ -31,7 +32,8 @@ export async function scoreArticles(
 
   const userPrompt = config.userTemplate
     .replace("{articles_json}", JSON.stringify(articlesForLlm))
-    .replace("{target_digest_size}", String(config.targetDigestSize));
+    .replace("{target_digest_size}", String(config.targetDigestSize))
+    .replace("{interests}", config.interests ?? "No specific preferences.");
 
   const fullPrompt = `${config.systemPrompt}\n\n${userPrompt}`;
 

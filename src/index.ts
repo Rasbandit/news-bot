@@ -3,7 +3,7 @@ import { Command } from "commander";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { loadFeedsConfig, loadPromptsConfig, loadOutputsConfig } from "./config.js";
+import { loadFeedsConfig, loadPromptsConfig, loadOutputsConfig, formatInterests } from "./config.js";
 import { fetchAllFeeds } from "./pipeline/fetch.js";
 import { normalizeArticles } from "./pipeline/normalize.js";
 import { deduplicateArticles, filterSeenArticles } from "./pipeline/dedup.js";
@@ -52,6 +52,7 @@ async function runPipeline(options: { dryRun: boolean }) {
       systemPrompt: promptsConfig.scorer.system,
       userTemplate: promptsConfig.scorer.user_template,
       targetDigestSize: feedsConfig.settings.target_digest_size,
+      interests: formatInterests(promptsConfig.interests),
     });
     console.log(`  Selected top ${scored.length} articles`);
 

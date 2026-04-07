@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
-import type { FeedsConfig, PromptConfig, OutputsConfig } from "./types.js";
+import type { FeedsConfig, PromptConfig, OutputsConfig, InterestsConfig } from "./types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CONFIG_DIR = resolve(__dirname, "../config");
@@ -35,4 +35,15 @@ export function loadPromptsConfig(): PromptConfig {
 
 export function loadOutputsConfig(): OutputsConfig {
   return resolveEnvVars(loadYaml("outputs.yaml")) as OutputsConfig;
+}
+
+export function formatInterests(interests: InterestsConfig): string {
+  const lines: string[] = [];
+  if (interests.boost.length) {
+    lines.push("BOOST: " + interests.boost.join(", "));
+  }
+  if (interests.deprioritize.length) {
+    lines.push("DEPRIORITIZE: " + interests.deprioritize.join(", "));
+  }
+  return lines.join("\n");
 }

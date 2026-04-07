@@ -1,7 +1,7 @@
 settings:
   max_articles_per_feed: 25
   max_article_age_hours: 24
-  target_digest_size: 15
+  target_digest_size: 10
 
 categories:
   tech:

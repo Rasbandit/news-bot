@@ -5,7 +5,6 @@ interface DiscordEmbed {
   title?: string;
   description?: string;
   color?: number;
-  fields?: { name: string; value: string; inline?: boolean }[];
   footer?: { text: string };
 }
 
@@ -22,10 +21,10 @@ const CATEGORY_EMOJI: Record<string, string> = {
 };
 
 const CATEGORY_COLOR: Record<string, number> = {
-  tech: 0x5865f2, // blurple
-  world: 0x57f287, // green
-  science: 0xfee75c, // yellow
-  business: 0xeb459e, // fuchsia
+  tech: 0x5865f2,
+  world: 0x57f287,
+  science: 0xfee75c,
+  business: 0xeb459e,
 };
 
 export function createDiscordPlugin(
@@ -36,23 +35,21 @@ export function createDiscordPlugin(
     name: "discord",
     enabled: true,
     async send(digest: DigestResult) {
-      const embeds = buildEmbeds(digest);
+      const embeds = buildCompactEmbeds(digest);
 
-      // Discord allows max 10 embeds per message
       for (let i = 0; i < embeds.length; i += maxEmbedsPerMessage) {
         const batch = embeds.slice(i, i + maxEmbedsPerMessage);
         const isFirst = i === 0;
 
         const payload: DiscordWebhookPayload = {
           ...(isFirst && {
-            content: `\u{1F4F0} **Daily Tech & World Digest** \u2014 ${formatDate(digest.generatedAt)}`,
+            content: `\u{1F4F0} **Daily Digest** \u2014 ${formatDate(digest.generatedAt)}`,
           }),
           embeds: batch,
         };
 
         await sendWebhook(webhookUrl, payload);
 
-        // Rate limit: small delay between messages
         if (i + maxEmbedsPerMessage < embeds.length) {
           await sleep(1000);
         }
@@ -61,7 +58,7 @@ export function createDiscordPlugin(
   };
 }
 
-function buildEmbeds(digest: DigestResult): DiscordEmbed[] {
+function buildCompactEmbeds(digest: DigestResult): DiscordEmbed[] {
   const grouped = groupByCategory(digest.articles);
   const embeds: DiscordEmbed[] = [];
 
@@ -69,40 +66,29 @@ function buildEmbeds(digest: DigestResult): DiscordEmbed[] {
     const emoji = CATEGORY_EMOJI[category] ?? "\u{1F4CB}";
     const color = CATEGORY_COLOR[category] ?? 0x99aab5;
 
-    // Category header embed
+    // One embed per category — all articles packed into description
+    const lines = articles.map((a) => formatArticleLine(a));
+    const description = lines.join("\n\n");
+
+    // Discord embed description limit is 4096 chars
     embeds.push({
-      title: `${emoji} ${category.toUpperCase()} (${articles.length})`,
+      title: `${emoji} ${category.toUpperCase()}`,
+      description: description.slice(0, 4096),
       color,
     });
-
-    // Article embeds
-    for (const article of articles) {
-      const toneIndicator =
-        article.tone === "positive"
-          ? "\u{2705}"
-          : article.tone === "negative"
-            ? "\u{1F7E1}"
-            : "";
-
-      embeds.push({
-        description: [
-          `**[${article.title}](${article.link})** \u2014 ${article.source} ${toneIndicator}`,
-          article.summary,
-        ].join("\n"),
-        color,
-      });
-    }
   }
 
-  // Footer embed
+  // Compact footer
   embeds.push({
-    footer: {
-      text: `${digest.articles.length} stories from ${digest.sourceCount} sources | ${digest.totalFetched} total scanned`,
-    },
+    description: `*${digest.articles.length} stories \u00b7 ${digest.sourceCount} sources \u00b7 ${digest.totalFetched} scanned*`,
     color: 0x2f3136,
   });
 
   return embeds;
+}
+
+function formatArticleLine(article: ScoredArticle): string {
+  return `**[${article.title}](${article.link})** \u2014 *${article.source}*\n${article.summary}`;
 }
 
 function groupByCategory(
