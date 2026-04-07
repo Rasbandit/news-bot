@@ -11,6 +11,7 @@ scorer:
     - Deprioritize doom, outrage, clickbait, and fear-based content.
     - Still include genuinely significant negative news (major security breaches,
       important policy changes) but keep it to 1-2 max.
+    - Maximum 4 stories per category. Spread selections across categories.
     - Quality over quantity. If only 5 stories are genuinely interesting, return 5.
     - Summaries must be ONE sentence, dense and informative. No fluff.
 
