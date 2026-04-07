@@ -1,13 +1,13 @@
 scorer:
   system: |
     You are a ruthlessly selective news curator. Your reader is a senior
-    engineer who wants only the most interesting, novel, and actionable stories.
+    infrastructure engineer who wants only the most interesting, novel,
+    and actionable stories.
 
     HARD RULES:
     - Never include two stories about the same topic or event. Pick the best one.
     - Maximize coverage breadth — each selected story should be about a
-      distinctly different subject. Aim for variety across domains (security,
-      AI, infrastructure, space, policy, open source, etc.).
+      distinctly different subject. Aim for variety across domains.
     - Deprioritize doom, outrage, clickbait, and fear-based content.
     - Still include genuinely significant negative news (major security breaches,
       important policy changes) but keep it to 1-2 max.
@@ -34,18 +34,51 @@ scorer:
 
 interests:
   boost:
-    - Systems programming, infrastructure, and networking
-    - Open source projects and community developments
-    - Security vulnerabilities, cryptography, post-quantum
-    - Developer tools, programming languages, compilers
-    - AI/ML breakthroughs (models, training, practical applications)
-    - Robotics and hardware engineering
-    - Space exploration and astronomy
-    - Science breakthroughs and research
-    - Clever engineering and maker projects
+    # --- Core Tech ---
+    - Rust, Go, TypeScript — language releases, features, ecosystem
+    - Linux kernel, containers, Kubernetes, Nix, NixOS
+    - Databases (Postgres, Redis/Valkey, SQLite), distributed systems, consensus algorithms
+    - Developer tools, editors, CLI tools, terminal productivity
+    - Networking, protocols, DNS, BGP, HTTP/3
+
+    # --- AI & ML ---
+    - Open source models and local inference (Llama, Mistral, Ollama)
+    - Applied AI tooling (LangChain, RAG, embeddings, agent frameworks)
+    - Foundation model releases and genuine capability jumps
+    - Robotics, embodied AI, autonomous systems
+
+    # --- Security ---
+    - Major vulnerabilities and breaches (big CVEs, nation-state attacks)
+    - Cryptography, post-quantum algorithms, protocol upgrades (TLS, SSH)
+
+    # --- Science & Space ---
+    - Space missions, launches, astronomy discoveries (Artemis, JWST, exoplanets)
+    - Physics and engineering breakthroughs (fusion, quantum computing hardware, materials science)
+    - Major biology/health breakthroughs only (gene therapy, novel treatments)
+
+    # --- Policy & Business ---
+    - Tech regulation (FTC, antitrust, Section 230)
+    - Cybersecurity policy (CISA advisories, NSA directives)
+    - NASA and science funding decisions
+    - Economic indicators that affect tech (rates, layoffs, chip supply)
+    - Open source business models and license changes
+
+    # --- Maker & Hardware ---
+    - Clever DIY/engineering projects, 3D printing, electronics
+    - Hardware hacking, custom builds, unusual engineering
+
   deprioritize:
-    - Celebrity/entertainment news
-    - Product launch marketing fluff
+    # --- Hard skips ---
+    - Rage bait, outrage framing, emotional manipulation headlines
+    - Listicles and SEO content ("Top 10 tools every developer needs")
+    - Celebrity tech personas (Elon drama, Zuck feuds, billionaire gossip)
+    - Crypto/NFT/Web3 price speculation (not the underlying tech)
+    - AI hype and thought leadership ("AI will change everything" op-eds)
+    - AI art/copyright drama and lawsuits
+    - AI regulation debates (unless genuinely major policy shift)
+    - AI in education/HR fluff
+    - Product launch marketing without technical substance
     - Funding rounds without technical substance
     - Opinion pieces and hot takes
-    - Sports
+    - Sports and entertainment
+    - Routine political noise (only include genuinely historic domestic shifts)
