@@ -1,0 +1,14 @@
+[Unit]
+Description=Daily news digest bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/documents/code-projects/news-bot
+ExecStart=/usr/bin/npx tsx src/index.ts run
+Environment=PATH=/usr/local/bin:/usr/bin
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
