@@ -1,0 +1,5 @@
+outputs:
+  discord:
+    enabled: true
+    webhook_url: ${DISCORD_WEBHOOK_URL}
+    max_embeds_per_message: 10

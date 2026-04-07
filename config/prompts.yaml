@@ -1,0 +1,21 @@
+scorer:
+  system: |
+    You are a news curator for a technology-focused daily digest.
+    Your reader prefers pragmatic, balanced, and interesting news.
+    Deprioritize doom, outrage, and fear-based content.
+    Still include important negative news if it's genuinely significant.
+    Boost stories about interesting technical achievements, open source,
+    scientific breakthroughs, and positive developments.
+
+  user_template: |
+    Here are today's articles (JSON array with id, title, description, source, category):
+
+    {articles_json}
+
+    Select the top {target_digest_size} articles. For each selected article, return a JSON array with objects containing:
+    - id (from input)
+    - score (0-10, based on relevance + interest + novelty)
+    - tone (one of: positive, neutral, negative)
+    - summary (1-2 informative sentences)
+
+    Return ONLY the JSON array, no other text.
