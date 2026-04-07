@@ -1,0 +1,116 @@
+# Watch Reports — conditional feeds (only post when something matches)
+# These are NOT active yet. This is the feed catalog for future implementation.
+
+watches:
+  # --- ANIME & MANGA ---
+  anime:
+    score_threshold: 8
+    feeds:
+      - name: MyAnimeList News
+        url: https://myanimelist.net/rss/news.xml
+      - name: Anime News Network
+        url: https://www.animenewsnetwork.com/all/rss.xml
+    watchlist: []  # Add specific titles here
+    preferences: >
+      Shonen action, seinen drama, studio Mappa/Trigger productions
+
+  # --- GAMING INDUSTRY ---
+  gaming:
+    score_threshold: 8
+    feeds:
+      - name: Rock Paper Shotgun
+        url: https://www.rockpapershotgun.com/feed
+      - name: PC Gamer
+        url: https://www.pcgamer.com/rss/
+      - name: Kotaku
+        url: https://kotaku.com/rss
+    watchlist: []  # Add specific game titles here
+    preferences: >
+      Industry moves, acquisitions, dev insights, indie gems.
+      Skip reviews and listicles.
+
+  # --- FILM & TV ---
+  film:
+    score_threshold: 8
+    feeds:
+      - name: IndieWire
+        url: https://www.indiewire.com/feed/
+      - name: SciFiNow
+        url: https://www.scifinow.co.uk/feed/
+    watchlist: []  # Add specific titles/franchises
+    preferences: >
+      A24, sci-fi, thriller, interesting productions.
+      Skip superhero fatigue and celebrity gossip.
+
+  # --- MUSIC & AUDIO ---
+  music:
+    score_threshold: 8
+    feeds:
+      - name: Sound on Sound
+        url: https://www.soundonsound.com/rss/news.xml
+      - name: MusicRadar
+        url: https://www.musicradar.com/rss/news
+    preferences: >
+      Music production, audio engineering, DAW and plugin news.
+      Skip artist gossip and chart rankings.
+
+  # --- RETRO COMPUTING ---
+  retro:
+    score_threshold: 8
+    feeds:
+      - name: r/emulation
+        url: https://www.reddit.com/r/emulation/.rss
+      - name: Archive.org Blog
+        url: https://blog.archive.org/feed/
+    preferences: >
+      Emulation breakthroughs, vintage hardware preservation,
+      hardware recreation projects.
+
+  # --- JAPAN & CULTURE ---
+  japan:
+    score_threshold: 8
+    feeds:
+      - name: Japan Times
+        url: https://www.japantimes.co.jp/feed/
+      - name: Nippon.com
+        url: https://www.nippon.com/en/feed/
+      - name: Tofugu
+        url: https://www.tofugu.com/feed/
+    preferences: >
+      Cultural insights, language, society, traditions.
+      Not just politics or economy.
+
+  # --- PERSONAL FINANCE / FIRE ---
+  finance:
+    score_threshold: 9
+    feeds:
+      - name: r/financialindependence
+        url: https://www.reddit.com/r/financialindependence/.rss
+      - name: Mr. Money Mustache
+        url: http://www.mrmoneymustache.com/feed/
+    preferences: >
+      FIRE strategies, investment insights, tax optimization.
+      Skip crypto speculation and get-rich-quick.
+
+  # --- HISTORY & ARCHAEOLOGY ---
+  history:
+    score_threshold: 8
+    feeds:
+      - name: Archaeology Magazine
+        url: https://archaeology.org/feed/
+      - name: Smithsonian
+        url: https://www.smithsonianmag.com/rss/smart-news.xml
+    preferences: >
+      New discoveries, archaeological findings, historical analysis.
+
+  # --- CS THEORY & MATH ---
+  cs_theory:
+    score_threshold: 9
+    feeds:
+      - name: arXiv CS Theory
+        url: http://arxiv.org/rss/cs.CC
+      - name: arXiv Data Structures
+        url: http://arxiv.org/rss/cs.DS
+    preferences: >
+      Significant new results in algorithms, complexity, or proofs.
+      Only surface genuinely notable papers.

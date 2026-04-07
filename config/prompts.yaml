@@ -63,6 +63,11 @@ interests:
     - Economic indicators that affect tech (rates, layoffs, chip supply)
     - Open source business models and license changes
 
+    # --- Self-Hosting & Homelab ---
+    - Self-hosted alternatives to SaaS, Unraid, Docker compose setups
+    - Homelab builds, NAS, home networking, reverse proxies
+    - New open source self-hostable tools and services
+
     # --- Maker & Hardware ---
     - Clever DIY/engineering projects, 3D printing, electronics
     - Hardware hacking, custom builds, unusual engineering

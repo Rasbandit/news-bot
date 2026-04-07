@@ -1,12 +1,12 @@
 settings:
   max_articles_per_feed: 20
   max_article_age_hours: 24
-  target_digest_size: 10
+  target_digest_size: 12
 
 categories:
   # --- TECH: Community-curated (highest signal) ---
   tech:
-    weight: 0.5
+    weight: 0.4
     feeds:
       - name: Hacker News
         url: https://hnrss.org/best
@@ -17,7 +17,7 @@ categories:
 
   # --- TECH: Journalism (deeper reporting) ---
   tech_journalism:
-    weight: 0.2
+    weight: 0.15
     feeds:
       - name: Ars Technica
         url: https://feeds.arstechnica.com/arstechnica/index
@@ -32,7 +32,18 @@ categories:
         url: http://feeds.bbci.co.uk/news/technology/rss.xml
         weight: 0.7
 
-  # --- SECURITY: Focused feeds ---
+  # --- SELF-HOSTING / HOMELAB ---
+  selfhosted:
+    weight: 0.1
+    feeds:
+      - name: r/selfhosted
+        url: https://www.reddit.com/r/selfhosted/.rss
+        weight: 1.0
+      - name: r/homelab
+        url: https://www.reddit.com/r/homelab/.rss
+        weight: 0.9
+
+  # --- SECURITY ---
   security:
     weight: 0.1
     feeds:
@@ -46,9 +57,9 @@ categories:
         url: https://feeds.feedburner.com/TheHackersNews
         weight: 1.0
 
-  # --- SCIENCE: Focused feeds ---
+  # --- SCIENCE & SPACE ---
   science:
-    weight: 0.05
+    weight: 0.1
     feeds:
       - name: BBC Science
         url: http://feeds.bbci.co.uk/news/science_and_environment/rss.xml
@@ -56,8 +67,11 @@ categories:
       - name: Phys.org
         url: https://phys.org/rss-feed/
         weight: 0.8
+      - name: NASA Breaking News
+        url: https://www.nasa.gov/news-release/feed/
+        weight: 1.0
 
-  # --- WORLD/USA: Balanced wire services ---
+  # --- WORLD / USA ---
   world:
     weight: 0.15
     feeds:
