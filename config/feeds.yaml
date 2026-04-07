@@ -36,11 +36,11 @@ categories:
   selfhosted:
     weight: 0.1
     feeds:
-      - name: r/selfhosted
-        url: https://www.reddit.com/r/selfhosted/.rss
+      - name: Noted (selfhosted)
+        url: https://noted.lol/rss/
         weight: 1.0
-      - name: r/homelab
-        url: https://www.reddit.com/r/homelab/.rss
+      - name: Awesome Selfhosted
+        url: https://github.com/awesome-selfhosted/awesome-selfhosted/releases.atom
         weight: 0.9
 
   # --- SECURITY ---
