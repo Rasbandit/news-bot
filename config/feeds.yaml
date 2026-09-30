@@ -1,12 +1,12 @@
 settings:
   max_articles_per_feed: 20
   max_article_age_hours: 24
-  target_digest_size: 12
+  target_digest_size: 8
 
 categories:
-  # --- TECH: Community-curated (highest signal) ---
+  # --- TECH: Community-curated + journalism ---
   tech:
-    weight: 0.4
+    weight: 0.55
     feeds:
       - name: Hacker News
         url: https://hnrss.org/best
@@ -14,11 +14,6 @@ categories:
       - name: Lobsters
         url: https://lobste.rs/rss
         weight: 1.2
-
-  # --- TECH: Journalism (deeper reporting) ---
-  tech_journalism:
-    weight: 0.15
-    feeds:
       - name: Ars Technica
         url: https://feeds.arstechnica.com/arstechnica/index
         weight: 1.0
