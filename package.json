@@ -1,11 +1,7 @@
 {
   "name": "news-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "Daily news digest: RSS feeds, deduped, picked and summarized by Claude, posted to Discord.",
   "scripts": {
     "test": "vitest run",
     "build": "tsc",
@@ -13,9 +9,16 @@
     "dev": "tsx src/index.ts",
     "test:watch": "vitest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "rss",
+    "news",
+    "discord",
+    "claude",
+    "llm",
+    "digest"
+  ],
+  "author": "Todd Rasband",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "better-sqlite3": "^12.8.0",
